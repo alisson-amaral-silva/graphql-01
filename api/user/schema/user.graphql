@@ -13,9 +13,15 @@ const userSchema = gql ` #typeDefs => definição do schema
     type: String!
   }
 
-    type Query { 
+    type Query {  # consultas, tipo get
     users: [User] #  array de user
     user(id: ID!): User!
+  }
+
+   type Mutation { # qualquer alteração (POST/PUT/DELETE)
+    adicionaUser(nome: String!, ativo: Boolean!, email: String!, role: String!): User!
+    atualizaUser(id: ID!, nome: String!, ativo: Boolean!, email: String!, role: String!): User!
+    deletaUser(id: ID!): ID!
   }
 `
 
