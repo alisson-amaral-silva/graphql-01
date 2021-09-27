@@ -9,6 +9,7 @@ scalar DateTime #criação de nova prop padronizada
     email: String
     role: Role!
     createdAt: DateTime
+    matriculas: [Matricula]
   }
 
   input UserInput {
