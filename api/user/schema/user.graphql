@@ -5,11 +5,17 @@ const userSchema = gql ` #typeDefs => definição do schema
     nome: String! #isso dita que o dado é obrigatório
     ativo: Boolean!
     email: String
+    role: Role!
+  }
+
+  type Role {
+    id: ID!
+    type: String!
   }
 
     type Query { 
     users: [User] #  array de user
-    user: User
+    user(id: ID!): User!
   }
 `
 
