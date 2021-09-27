@@ -20,6 +20,12 @@ const turmaResolvers = {
     deletaTurma: (_, { id }, { dataSources }) => dataSources.turmasAPI.deletaTurma(id),
   },
 
+  Turma: {
+    // parent de matricula é turma (hierarquicamente falando)
+    matriculas: (parent, _, { dataSources }) => dataSources.matriculasAPI.getMatriculasPorTurma(parent.id),
+    docente: (parent, _, { dataSources }) => dataSources.usersAPI.getUserById(parent.docente_id)
+  }
+
 }
 
 module.exports = turmaResolvers
