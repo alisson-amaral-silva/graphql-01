@@ -23,8 +23,8 @@ const userResolvers = {
         - info: a representação em árvore da query ou da mutation.
     
     */
-      users: (root, args, { dataSources }) => dataSources.usersAPI.getUsers(),
-      user: (root, { id }, { dataSources }) => dataSources.usersAPI.getUserById(id)
+        users: (_, args, { dataSources }) => dataSources.usersAPI.getUsers(args),
+        user: (_, { id }, { dataSources }) => dataSources.usersAPI.getUserById(id)
     },
     Mutation: {
         adicionaUser: async (root, { user }, { dataSources }) => dataSources.usersAPI.adicionaUser(user),
