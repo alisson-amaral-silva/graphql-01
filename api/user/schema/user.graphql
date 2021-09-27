@@ -1,16 +1,33 @@
 const { gql } = require('apollo-server')
 
 const userSchema = gql ` #typeDefs => definição do schema
+scalar DateTime #criação de nova prop padronizada
+
   type User {
     nome: String! #isso dita que o dado é obrigatório
     ativo: Boolean!
     email: String
     role: Role!
+    createdAt: DateTime
   }
 
+  input UserInput {
+    nome: String
+    ativo: Boolean
+    email: String
+    role: RolesType
+    createdAt: DateTime
+  }
+  
   type Role {
     id: ID!
-    type: String!
+    type: RolesType!
+  }
+
+  enum RolesType {
+    ESTUDANTE
+    DOCENTE
+    COORDENACAO
   }
 
     type Query {  # consultas, tipo get
@@ -19,9 +36,25 @@ const userSchema = gql ` #typeDefs => definição do schema
   }
 
    type Mutation { # qualquer alteração (POST/PUT/DELETE)
-    adicionaUser(nome: String!, ativo: Boolean!, email: String!, role: String!): User!
-    atualizaUser(id: ID!, nome: String!, ativo: Boolean!, email: String!, role: String!): User!
-    deletaUser(id: ID!): ID!
+    adicionaUser(user: UserInput): User!
+    atualizaUser(id: ID!, user: UserInput): atualizaUserResposta!
+    deletaUser(id: ID!): deletaUserResposta!
+  }
+
+   interface respostaCustom {
+    code: Int!
+    mensagem: String!
+  }
+
+   type deletaUserResposta implements respostaCustom {
+    code: Int!
+    mensagem: String!
+  }
+
+  type atualizaUserResposta implements respostaCustom {
+    code: Int!
+    mensagem: String!
+    userAtualizado: User!
   }
 `
 
