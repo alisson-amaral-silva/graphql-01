@@ -1,5 +1,5 @@
 {
-  "name": "roteiro",
+  "name": "Estudos de graphql",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -14,10 +14,7 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/alura-cursos/1922-graphql/issues"
-  },
-  "homepage": "https://github.com/alura-cursos/1922-graphql#readme",
+  "homepage": "https://github.com/alisson-amaral-silva/graphql-01#readme",
   "dependencies": {
     "apollo-datasource-rest": "^3.2.0",
     "apollo-server": "^3.3.0",
